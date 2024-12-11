@@ -25,10 +25,14 @@
         border: 1px solid #000;
         border-radius: 6px;
       }
+
+      .title {
+        text-align: center;
+      }
     </style>
   </head>
   <body>
-    <h1>The Best Gaming Experience</h1>
+    <h1 class="title">The Best Gaming Experience</h1>
 
     <script>
       fetch("/data/game.pde").then((r) => r.text().then(addGameScript));
