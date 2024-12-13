@@ -3,9 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Gaming</title>
-    <script src="js/processing.js"></script>
-
+    <title>Flappy Lib</title>
+    <script src="assets/js/processing.js"></script>
+    <script src="assets/js/loader.js" defer></script>
+    <link rel="stylesheet" href="assets/css/reset.css" />
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap");
 
@@ -26,27 +27,61 @@
         border-radius: 6px;
       }
 
-      .title {
+      #sketch:focus {
+        outline: none;
+      }
+
+      .centerContainer {
+        display: flex;
+        justify-content: center;
+
+        padding-top: 2rem;
+      }
+
+      .centerText {
         text-align: center;
+      }
+
+      .container {
+        padding: 0.5rem;
+      }
+
+      .title {
+        font-size: 3rem;
+        font-weight: 700;
+      }
+
+      .btn {
+        background-color: #4287f5;
+        border: none;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+
+        border-radius: 0.75rem;
+      }
+
+      .btn:hover {
+        scale: 105%;
+        cursor: pointer;
+      }
+
+      .btn:active {
+        scale: 95%;
       }
     </style>
   </head>
-  <body>
-    <h1 class="title">The Best Gaming Experience</h1>
+  <body class="container" id="root">
+    <h1 class="title centerText">DingleWorth Gaming</h1>
+    <h3 class="centerText">The Best Gaming Experience</h3>
 
-    <script>
-      fetch("/data/game.pde").then((r) => r.text().then(addGameScript));
+    <div id="sketchContainer" class="centerContainer">
+      <canvas id="sketch"></canvas>
+    </div>
 
-      const addGameScript = (script) => {
-        const el = document.createElement("script");
-        el.type = "text/processing";
-        el.innerHTML = script;
-        document.body.insertBefore(el, document.getElementById("sketch"));
-
-        window.Processing.reload();
-      };
-    </script>
-
-    <canvas id="sketch"></canvas>
+    <div class="centerContainer">
+      <button class="btn" id="resetBtn">Reset Game</button>
+    </div>
   </body>
 </html>
