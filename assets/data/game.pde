@@ -196,7 +196,7 @@
  void onFail() {
      gameState = false;
 
-
+     document.getElementById("adDialog").showModal();
      if (currentScore > highScore) {
          highScore = currentScore;
      }

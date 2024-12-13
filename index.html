@@ -34,8 +34,6 @@
       .centerContainer {
         display: flex;
         justify-content: center;
-
-        padding-top: 2rem;
       }
 
       .centerText {
@@ -70,18 +68,66 @@
       .btn:active {
         scale: 95%;
       }
+
+      .hide {
+        display: none;
+      }
+
+      #adDialog::backdrop {
+        background-color: black;
+        opacity: 0.85;
+      }
+
+      .flex-col {
+        flex-direction: column;
+      }
+
+      .pt-2rem {
+        padding-top: 2rem;
+      }
+
+      .gap-2 {
+        gap: 2rem;
+      }
+
+      #adDialog {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        background-color: rgb(43, 39, 39);
+        padding: 1.5rem;
+        border: 2px solid rgb(46, 45, 45);
+        border-radius: 1rem;
+      }
+
+      #adDialog:focus {
+        outline: none;
+      }
     </style>
   </head>
   <body class="container" id="root">
     <h1 class="title centerText">DingleWorth Gaming</h1>
     <h3 class="centerText">The Best Gaming Experience</h3>
 
-    <div id="sketchContainer" class="centerContainer">
+    <div id="sketchContainer" class="centerContainer pt-2rem">
       <canvas id="sketch"></canvas>
     </div>
 
-    <div class="centerContainer">
-      <button class="btn" id="resetBtn">Reset Game</button>
+    <div class="centerContainer pt-2rem">
+      <button class="btn" id="adBtn">Upgrade to</button>
     </div>
+
+    <dialog id="adDialog">
+      <div class="centerContainer flex-col">
+        <h2 class="centerText">Watch Ad To Continue</h2>
+
+        <p>X seconds remaining</p>
+        <button class="btn" id="adBtn">
+          🚨🚨 Upgrade to Premium to Remove Ads 🚨🚨
+        </button>
+      </div>
+    </dialog>
   </body>
 </html>
