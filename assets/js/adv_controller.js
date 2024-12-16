@@ -19,6 +19,11 @@ class AdController {
 
   timeRemaining = 0;
 
+  /**
+   * @type {number | null}
+   */
+  lastAd = null;
+
   constructor() {
     /**
      * @type {HTMLDialogElement}
@@ -44,9 +49,11 @@ class AdController {
 
   startAd() {
     this.showingAd = true;
-    const randomVideo = AD_FILES[Math.floor(Math.random() * AD_FILES.length)];
 
-    this.adVideo.src = randomVideo;
+    const randomAd = this.#getNextAd();
+
+    this.lastAd = randomAd;
+    this.adVideo.src = randomAd;
     this.adVideo.play();
 
     this.adDialog.showModal();
@@ -56,6 +63,8 @@ class AdController {
   }
 
   #countdownTick() {
+    if (!this.showingAd) return;
+
     this.timeRemaining -= 1;
 
     this.#showTimeRemaining();
@@ -70,6 +79,7 @@ class AdController {
   }
 
   #onEnd() {
+    this.showingAd = false;
     if (this.timerRef) {
       clearInterval(this.timerRef);
     }
@@ -79,6 +89,17 @@ class AdController {
     this.adDialog.close();
 
     window.dispatchEvent(new CustomEvent("adOver"));
+  }
+
+  #getNextAd() {
+    const randomAd = AD_FILES[Math.floor(Math.random() * AD_FILES.length)];
+
+    // Ensure the random ad is different from the last ad
+    while (randomAd === this.lastAd) {
+      randomAd = AD_FILES[Math.floor(Math.random() * AD_FILES.length)];
+    }
+
+    return randomAd;
   }
 }
 
