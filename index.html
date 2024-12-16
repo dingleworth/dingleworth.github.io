@@ -6,6 +6,8 @@
     <title>Flappy Lib</title>
     <script src="assets/js/processing.js"></script>
     <script src="assets/js/loader.js" defer></script>
+    <script src="assets/js/adv_controller.js" defer></script>
+
     <link rel="stylesheet" href="assets/css/reset.css" />
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap");
@@ -102,6 +104,24 @@
         border-radius: 1rem;
       }
 
+      #adDialog .videoContainer {
+        background-color: #0066ff;
+        width: 320px;
+        height: 560px;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      #adDialog .videoContainer video {
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+      }
+
       #adDialog:focus {
         outline: none;
       }
@@ -116,14 +136,22 @@
     </div>
 
     <div class="centerContainer pt-2rem">
-      <button class="btn" id="adBtn">Upgrade to</button>
+      <button class="btn" id="adBtn">Upgrade to Premium to Remove Ads</button>
     </div>
 
     <dialog id="adDialog">
       <div class="centerContainer flex-col">
         <h2 class="centerText">Watch Ad To Continue</h2>
 
-        <p>X seconds remaining</p>
+        <div class="videoContainer">
+          <video id="adVideo" loop playsinline>
+            Your browser does not support the video element.
+          </video>
+        </div>
+
+        <span class="centerText">
+          <b id="adCountdown">X</b> seconds remaining
+        </span>
         <button class="btn" id="adBtn">
           🚨🚨 Upgrade to Premium to Remove Ads 🚨🚨
         </button>

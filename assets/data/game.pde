@@ -97,10 +97,10 @@
 
  void setup() {
      size(600, 600);
-     bg = new Background("bg1.png", "bg2.png");
-     bird = new Bird("libs3.png", width / 2, height / 2);
-     pipeImg = loadImage("pipe2.png");
-     pipeImgReversed = loadImage("pipe2_flipped.png");
+     bg = new Background("assets/data/flappy/bg1.png", "assets/data/flappy/bg2.png");
+     bird = new Bird("assets/data/flappy/libs3.png", width / 2, height / 2);
+     pipeImg = loadImage("assets/data/flappy/pipe2.png");
+     pipeImgReversed = loadImage("assets/data/flappy/pipe2_flipped.png");
 
      px = width;
      py = int(random(0, height));
@@ -196,7 +196,7 @@
  void onFail() {
      gameState = false;
 
-     document.getElementById("adDialog").showModal();
+     window.adController.startAd();
      if (currentScore > highScore) {
          highScore = currentScore;
      }

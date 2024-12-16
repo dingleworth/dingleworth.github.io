@@ -8,9 +8,3 @@ const addGameScript = (script) => {
 
   window.Processing.reload();
 };
-
-// document.getElementById("resetBtn").addEventListener("click", () => {
-//   if ("Processing" in window) {
-//     window.Processing.reload();
-//   }
-// });
