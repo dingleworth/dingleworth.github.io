@@ -5,6 +5,8 @@ const AD_FILES = [
   "assets/data/ads/a2.webm",
   "assets/data/ads/a3.webm",
   "assets/data/ads/a4.webm",
+  "assets/data/ads/a5.webm",
+  "assets/data/ads/a6.webm",
 ];
 
 class AdController {
