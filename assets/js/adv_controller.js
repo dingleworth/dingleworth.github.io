@@ -48,6 +48,10 @@ class AdController {
   }
 
   startAd() {
+    if (this.showingAd) {
+      return;
+    }
+
     this.showingAd = true;
 
     const randomAd = this.#getNextAd();
@@ -58,6 +62,11 @@ class AdController {
 
     this.adDialog.showModal();
     this.timeRemaining = AD_LENGTH;
+
+    if (this.timerRef) {
+      clearInterval(this.timerRef);
+    }
+
     this.timerRef = setInterval(this.#countdownTick.bind(this), 1000);
     this.#showTimeRemaining();
   }
@@ -82,6 +91,7 @@ class AdController {
     this.showingAd = false;
     if (this.timerRef) {
       clearInterval(this.timerRef);
+      this.timerRef = null;
     }
 
     this.adVideo.pause();
